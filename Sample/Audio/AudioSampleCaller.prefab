@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7040671334597967748}
   - component: {fileID: 7040671334597967867}
   m_Layer: 0
-  m_Name: AdioSampleCaller
+  m_Name: AudioSampleCaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
