@@ -1,0 +1,19 @@
+{
+  "name": "es.quicorax.jamutils",
+  "version": "0.6.0",
+  "displayName": "Jam Utilities Package",
+  "description": "Jam Utility Bundle tools",
+  "unity": "2021.3",
+  "unityRelease": "0f1",
+  "keywords": [
+    "utils, audio"
+  ],
+  "dependencies": {
+    "com.unity.textmeshpro": "1.0.0"
+  },
+  "author": {
+    "name": "quicorax",
+    "email": "qcolobrans@gmail.com",
+    "url": "https://github.com/Quicorax/jamUtils-pkg.git"
+  }
+}
