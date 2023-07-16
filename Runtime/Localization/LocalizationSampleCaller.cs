@@ -6,7 +6,6 @@ namespace Services.Runtime.Localization
     public class LocalizationSampleCaller : MonoBehaviour
     {
         [SerializeField] private SimpleEventBus _refreshText;
-        [SerializeField] private Localizations _localizationsData;
         [SerializeField] private TextLocalizer _text;
         [SerializeField] private string _textKey;
 
