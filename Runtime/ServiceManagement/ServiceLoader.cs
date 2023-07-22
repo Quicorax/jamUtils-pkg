@@ -1,20 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Services.Runtime.ServiceManagement
 {
     public class ServiceLoader : MonoBehaviour
     {
-		private bool _initialized;
+		[SerializedField] private string _nextScene;
 
         private void Awake()
         {
-			if(_initialized)
-			{
-				return;
-			}
-
-			_initialized = true;
-            
 			InitializeServices();
             DontDestroyOnLoad(gameObject);
         }
@@ -26,6 +20,8 @@ namespace Services.Runtime.ServiceManagement
                 definedService.Value.Initialize();
                 ServiceLocator.RegisterService(definedService.Key, definedService.Value);
             }
+
+			SceneManager.LoadScene(_nextScene)
         }
 
         private void OnDestroy()
