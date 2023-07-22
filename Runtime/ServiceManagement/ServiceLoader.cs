@@ -4,9 +4,18 @@ namespace Services.Runtime.ServiceManagement
 {
     public class ServiceLoader : MonoBehaviour
     {
+		private bool _initialized;
+
         private void Awake()
         {
-            InitializeServices();
+			if(_initialized)
+			{
+				return;
+			}
+
+			_initialized = true;
+            
+			InitializeServices();
             DontDestroyOnLoad(gameObject);
         }
 
