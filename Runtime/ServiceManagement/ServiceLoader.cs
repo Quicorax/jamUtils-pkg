@@ -5,7 +5,7 @@ namespace Services.Runtime.ServiceManagement
 {
     public class ServiceLoader : MonoBehaviour
     {
-		[SerializedField] private string _nextScene;
+		[SerializeField] private string _nextScene;
 
         private void Awake()
         {
