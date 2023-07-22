@@ -26,6 +26,11 @@ namespace Services.Runtime.Audio
 
         public void Initialize()
         {
+            if (_audioNest != null)
+            {
+                return;
+            }
+            
             var data = FetchDependencies();
             
             _audioNest = new GameObject().AddComponent<AudioNest>()
