@@ -7,6 +7,7 @@ namespace Services.Runtime.ServiceManagement
         private void Awake()
         {
             InitializeServices();
+            DontDestroyOnLoad(gameObject);
         }
 
         private void InitializeServices()
