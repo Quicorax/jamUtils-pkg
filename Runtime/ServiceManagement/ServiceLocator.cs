@@ -12,7 +12,6 @@ namespace Services.Runtime.ServiceManagement
         {
             if (_services.ContainsKey(type))
             {
-                Debug.LogError("Service already registered: " + type.Name);
                 return;
             }
 
