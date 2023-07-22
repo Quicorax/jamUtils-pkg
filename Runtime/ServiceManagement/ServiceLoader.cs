@@ -21,7 +21,7 @@ namespace Services.Runtime.ServiceManagement
                 ServiceLocator.RegisterService(definedService.Key, definedService.Value);
             }
 
-			SceneManager.LoadScene(_nextScene)
+			SceneManager.LoadScene(_nextScene);
         }
 
         private void OnDestroy()
