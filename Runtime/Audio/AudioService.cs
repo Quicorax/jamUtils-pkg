@@ -18,9 +18,9 @@ namespace Services.Runtime.Audio
         public void AddMusicVolume(float additiveValue) => _audioNest.Volume.AddMusicVolume(additiveValue);
         public void AddSFXVolume(float additiveValue) => _audioNest.Volume.AddSFXVolume(additiveValue);
         
-        public void MuteMaster() => _audioNest.Volume.MuteMaster();
-        public void MuteMusic() => _audioNest.Volume.MuteMusic();
-        public void MuteSFX() => _audioNest.Volume.MuteSFX();
+        public bool MuteMaster() => _audioNest.Volume.MuteMaster();
+        public bool MuteMusic() => _audioNest.Volume.MuteMusic();
+        public bool MuteSFX() => _audioNest.Volume.MuteSFX();
         
         public void ClearAudio() => _audioNest.ClearAudio();
 

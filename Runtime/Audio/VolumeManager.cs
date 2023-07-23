@@ -16,9 +16,9 @@ namespace Services.Runtime.Audio
         public void AddMusicVolume(float additiveValue) => AddVolume(additiveValue, "Music");
         public void AddSFXVolume(float additiveValue) => AddVolume(additiveValue, "SFX");
 
-        public void MuteMaster() => MuteChannel("Master");
-        public void MuteMusic() => MuteChannel("Music");
-        public void MuteSFX() => MuteChannel("SFX");
+        public bool MuteMaster() => MuteChannel("Master");
+        public bool MuteMusic() => MuteChannel("Music");
+        public bool MuteSFX() => MuteChannel("SFX");
 
         public void ConfigureInitialVolume()
         {
@@ -42,7 +42,7 @@ namespace Services.Runtime.Audio
             PlayerPrefs.SetFloat(savedVolumeKey, actualMasterVolume);
         }
 
-        private void MuteChannel(string conceptKey)
+        private bool MuteChannel(string conceptKey)
         {
             GenerateKeys(conceptKey, out var volumeKey, out var mutedKey, out var savedVolumeKey);
 
@@ -52,6 +52,8 @@ namespace Services.Runtime.Audio
                 isMuted ? PlayerPrefs.GetFloat(savedVolumeKey) : -80);
 
             PlayerPrefs.SetInt(mutedKey, isMuted ? 0 : 1);
+
+            return isMuted;
         }
 
         private void ConfigureChannelVolume(string conceptKey)
