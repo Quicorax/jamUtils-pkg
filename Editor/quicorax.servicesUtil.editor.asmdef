@@ -1,0 +1,16 @@
+{
+    "name": "quicorax.servicesUtil.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:904383bed1f9ffc4cb11553386b9949b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
