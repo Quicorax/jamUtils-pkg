@@ -2,16 +2,16 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Quicorax.Editor
+namespace Services.Editor
 {
-    public class SceneSwitcher : EditorWindow
+    public class SceneSwitcherWindow : EditorWindow
     {
         private Vector2 _scrollPos;
 
-        [MenuItem("Quicorax/Scene Switcher")]
+        [MenuItem("Quicorax/SceneSwitcher Window")]
         private static void Init()
         {
-            var window = GetWindow(typeof(SceneSwitcher), false, "Scene Switcher");
+            var window = GetWindow(typeof(SceneSwitcherWindow), false, "Scene Switcher");
             window.Show();
         }
 
@@ -21,7 +21,9 @@ namespace Quicorax.Editor
             foreach (var scene in EditorBuildSettings.scenes)
             {
                 if (GUILayout.Button(System.IO.Path.GetFileNameWithoutExtension(scene.path)))
+                {
                     EditorSceneManager.OpenScene(scene.path);
+                }
             }
 
             EditorGUILayout.EndScrollView();
