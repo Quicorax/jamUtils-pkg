@@ -11,6 +11,11 @@ namespace Services.Runtime.ServiceManagement
         {
 			InitializeServices();
             DontDestroyOnLoad(gameObject);
+        } 
+	
+	private void Start()
+        {
+		SceneManager.LoadScene(_nextScene);
         }
 
         private void InitializeServices()
@@ -21,7 +26,6 @@ namespace Services.Runtime.ServiceManagement
                 ServiceLocator.RegisterService(definedService.Key, definedService.Value);
             }
 
-			SceneManager.LoadScene(_nextScene);
         }
 
         private void OnDestroy()
