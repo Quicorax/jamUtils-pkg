@@ -13,9 +13,9 @@ namespace Services.Runtime.ServiceManagement
             DontDestroyOnLoad(gameObject);
         } 
 	
-	private void Start()
+		private void Start()
         {
-		SceneManager.LoadScene(_nextScene);
+			SceneManager.LoadScene(_nextScene);
         }
 
         private void InitializeServices()
