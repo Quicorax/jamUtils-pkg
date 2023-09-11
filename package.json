@@ -1,6 +1,6 @@
 {
   "name": "es.quicorax.jamutils",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "displayName": "Jam Utilities Package",
   "description": "Jam Utility Bundle tools",
   "unity": "2021.3",
