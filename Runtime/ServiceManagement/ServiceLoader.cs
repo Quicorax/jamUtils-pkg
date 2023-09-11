@@ -22,7 +22,6 @@ namespace Services.Runtime.ServiceManagement
         {
             foreach (var definedService in DefinedServices.Services)
             {
-                definedService.Value.Initialize();
                 ServiceLocator.RegisterService(definedService.Key, definedService.Value);
             }
 

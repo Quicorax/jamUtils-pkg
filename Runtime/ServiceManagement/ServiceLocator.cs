@@ -10,6 +10,7 @@ namespace Services.Runtime.ServiceManagement
 
         public static void RegisterService<T>(Type type, T service) where T : class, IService
         {
+            service.Initialize();
             if (_services.ContainsKey(type))
             {
                 return;
