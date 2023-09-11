@@ -11,6 +11,7 @@ namespace Services.Runtime.ServiceManagement
         {
             { typeof(AudioService), new AudioService() },
             { typeof(LocalizationService), new LocalizationService() },
+            { typeof(RemoteVariablesService), new RemoteVariablesService() },
         };
     }
 }
