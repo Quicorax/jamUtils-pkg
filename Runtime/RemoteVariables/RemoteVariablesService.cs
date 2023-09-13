@@ -16,7 +16,7 @@ namespace Services.Runtime.RemoteVariables
 
         private readonly Dictionary<string, RemoteVariableType> _remoteVariables = new();
 
-        public string GetString(string variableKey) => (string)Get("string", variableKey);
+        public string GetString(string variableKey) => Get("string", variableKey).ToString();
         public int GetInt(string variableKey) => (int)Get("int", variableKey);
         public float GetFloat(string variableKey) => (float)Get("float", variableKey);
 
