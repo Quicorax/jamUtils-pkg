@@ -46,13 +46,6 @@ namespace Services.Runtime.RemoteVariables
             }
 
             var remoteVariable = _remoteVariables[variableKey];
-
-            if (remoteVariable.Type != type)
-            {
-                Debug.LogError($"Remote Variable with key {variableKey} is not defined as {type}!");
-                return null;
-            }
-
             return remoteVariable.Type switch
             {
                 "int" => int.Parse(remoteVariable.Value),
