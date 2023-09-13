@@ -6,22 +6,19 @@ namespace Services.Runtime.RemoteVariables
 {
     public class RemoteVariablesService : IService
     {
+        private class RemoteVariableType
+        {
+            public string Type;
+            public string Value;
+        }
+
         private const string DataPath = "RemoteData/RemoteVariables";
 
-        private readonly Dictionary<string, object> _remoteVariables = new();
+        private readonly Dictionary<string, RemoteVariableType> _remoteVariables = new();
 
-        public object GetVariable(string variableKey)
-        {
-            var remoteVariable = _remoteVariables[variableKey];
-
-            if (remoteVariable == null)
-            {
-                Debug.LogError($"Remote Variable with key {variableKey} is not defined!");
-                return null;
-            }
-
-            return remoteVariable;
-        }
+        public string GetString(string variableKey) => (string)Get("string", variableKey);
+        public int GetInt(string variableKey) => (int)Get("int", variableKey);
+        public float GetFloat(string variableKey) => (float)Get("float", variableKey);
 
         public void Initialize()
         {
@@ -30,20 +27,39 @@ namespace Services.Runtime.RemoteVariables
 
             foreach (var remoteVariable in serializedData.data)
             {
-                object value = remoteVariable.Type switch
-                {
-                    "int" => int.Parse(remoteVariable.Value),
-                    "float" => float.Parse(remoteVariable.Value),
-                    "string" => remoteVariable.Value,
-                    _ => null
-                };
-
-                _remoteVariables.Add(remoteVariable.VariableKey, value);
+                _remoteVariables.Add(remoteVariable.VariableKey,
+                    new RemoteVariableType { Type = remoteVariable.Type, Value = remoteVariable.Value });
             }
         }
 
         public void Clear()
         {
+            _remoteVariables.Clear();
+        }
+
+        private object Get(string type, string variableKey)
+        {
+            if (!_remoteVariables.ContainsKey(variableKey))
+            {
+                Debug.LogError($"Remote Variable with key {variableKey} is not defined!");
+                return null;
+            }
+
+            var remoteVariable = _remoteVariables[variableKey];
+
+            if (remoteVariable.Type != type)
+            {
+                Debug.LogError($"Remote Variable with key {variableKey} is not defined as {type}!");
+                return null;
+            }
+
+            return remoteVariable.Type switch
+            {
+                "int" => int.Parse(remoteVariable.Value),
+                "float" => float.Parse(remoteVariable.Value),
+                "string" => remoteVariable.Value,
+                _ => null
+            };
         }
     }
 }
