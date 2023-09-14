@@ -6,6 +6,12 @@ namespace Services.Runtime.RemoteVariables
 {
     public class RemoteVariablesService : IService
     {
+        private class RemoteVariableType
+        {
+            public string Type;
+            public string Value;
+        }
+
         private const string DataPath = "RemoteData/RemoteVariables";
 
         private readonly Dictionary<string, string> _remoteVariables = new();
