@@ -8,20 +8,11 @@ namespace Services.Runtime.RemoteVariables
     {
         private const string DataPath = "RemoteData/RemoteVariables";
 
-        private readonly Dictionary<string, object> _remoteVariables = new();
+        private readonly Dictionary<string, string> _remoteVariables = new();
 
-        public object GetVariable(string variableKey)
-        {
-            var remoteVariable = _remoteVariables[variableKey];
-
-            if (remoteVariable == null)
-            {
-                Debug.LogError($"Remote Variable with key {variableKey} is not defined!");
-                return null;
-            }
-
-            return remoteVariable;
-        }
+        public string GetString(string variableKey) => Get(variableKey);
+        public int GetInt(string variableKey) => int.Parse(Get(variableKey));
+        public float GetFloat(string variableKey) => float.Parse(Get(variableKey));
 
         public void Initialize()
         {
@@ -30,20 +21,24 @@ namespace Services.Runtime.RemoteVariables
 
             foreach (var remoteVariable in serializedData.data)
             {
-                object value = remoteVariable.Type switch
-                {
-                    "int" => int.Parse(remoteVariable.Value),
-                    "float" => float.Parse(remoteVariable.Value),
-                    "string" => remoteVariable.Value,
-                    _ => null
-                };
-
-                _remoteVariables.Add(remoteVariable.VariableKey, value);
+                _remoteVariables.Add(remoteVariable.VariableKey, remoteVariable.Value);
             }
         }
 
         public void Clear()
         {
+            _remoteVariables.Clear();
+        }
+
+        private string Get(string variableKey)
+        {
+            if (!_remoteVariables.ContainsKey(variableKey))
+            {
+                Debug.LogError($"Remote Variable with key {variableKey} is not defined!");
+                return null;
+            }
+
+            return _remoteVariables[variableKey];
         }
     }
 }
