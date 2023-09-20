@@ -1,10 +1,12 @@
 {
-    "name": "quicorax.servicesUtil.editor",
+    "name": "NewAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:904383bed1f9ffc4cb11553386b9949b"
+        "quicorax.servicelocator"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
